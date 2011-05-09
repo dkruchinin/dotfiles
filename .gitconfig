@@ -1,0 +1,8 @@
+[user]
+	name = <name>
+	email = <email>
+[color]
+	status = true
+	pager = true
+	diff = true
+	branch = true

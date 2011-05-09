@@ -1,0 +1,14 @@
+[defaults]
+log = -v --stat
+status = -m
+tip = -vp
+
+[ui]
+username = <name> <email>
+
+[extensions]
+hgext.bookmarks = 
+
+[alias]
+slog = log --stat -l 5
+
