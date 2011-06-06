@@ -18,6 +18,8 @@ export TERM=xterm
 export MENUCONFIG_COLOR=mono
 export MANPATH=$X11HOME/man:/usr/man:/usr/lang/man:/usr/share/man:/usr/local/man
 export PATH=$PATH:$HOME/utils
+# make less understand colors 
+export LESS=FRSXQ
 
 ####################
 # ZSH options
@@ -198,6 +200,9 @@ setprompt() {
     PROMPT="${braces_cl}(${info_cl}%n@%m${braces_cl}) ${prompt_cl}%#${reset_cl} "
     RPROMPT=" ${braces_cl}[${path_cl}%~${braces_cl} | ${errcode_cl}%?${reset_cl}${braces_cl}]${reset_cl}"
 }
+
+# private functions used mostly for my work
+source $HOME/.zsh_privates
 
 # highlight and prompt
 source $HOME/.zsh_functions/zsh-syntax-highlighting.zsh

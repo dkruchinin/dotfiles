@@ -61,7 +61,7 @@
  myBorderWidth   = 1
  myModMask       = mod4Mask
  myNumlockMask   = mod2Mask
- myWorkspaces    = ["terms","www","emacs","doc","vm","6","7","8","im" ]
+ myWorkspaces    = ["terms","www","emacs","gtd","doc","vm","7","8","im" ]
  myNormalBorderColor  = "#657b83"
  myFocusedBorderColor = "#859900"
  myNormalBg =  "#002b36"
@@ -222,6 +222,7 @@
              onWorkspace "im" imLayout $
              onWorkspace "emacs" emacsLayout $
              onWorkspace "vm" vmLayout $
+	     onWorkspace "8" termsLayout
 	     Full
 
      -- Layout for terminals
@@ -240,7 +241,7 @@
      -- The master pane is always occupied by main emacs frame.
      -- Bottom part of the workspace (slave pane) is used by
      -- popup helper frame used for temporary buffers(*Help*, *Compilation*, etc)
-     emacsLayout = limitWindows 2 StackTile 1 (3/100) (4/5)
+     emacsLayout = limitWindows 2 $ StackTile 1 (3/100) (4/5)
 
      --
      -- Layout for virtual machines (kvm, qemu, wmware, virtualbox)
@@ -278,24 +279,24 @@
  -- Window rules:
 
  myManageHook = (composeAll . concat $
-	[   [ className =? b --> doCenterFloat | b <- myFloats ]
-      , [ className =? b --> doF(W.shift "www") | b <- myWebs ]
-	  , [ className =? b --> doF(W.shift "im") | b <- myIMs ]
-	  , [ className =? b --> doF(W.shift "docs") | b <- myDocs ]
-      , [ className =? b --> doF(W.shift "vm") | b <- myVMs ]
+	[ [ className =? b --> doCenterFloat | b <- myFloats ]
+        , [ className =? b --> doF(W.shift "www") | b <- myWebs ]
+        , [ className =? b --> doF(W.shift "im") | b <- myIMs ]
+        , [ className =? b --> doF(W.shift "doc") | b <- myDocs ]
+        , [ className =? b --> doF(W.shift "vm") | b <- myVMs ]
+        , [ resource =? "ORG" --> doF(W.shift "gtd") ]
       -- Always spawnDown second emacs window (helper frame must be on the bottom
-	  , [ className =? "Emacs" --> doF(W.shift "emacs") <+> doF W.swapDown ]
-
-	  , [ className =? "URxvt" --> doF(W.shift "terms") ]
-	  , [ resource  =? "gnome-panel"      --> doIgnore ]
+        , [ className =? "Emacs" --> doF(W.shift "emacs") <+> doF W.swapDown ]
+        , [ className =? "URxvt" --> doF(W.shift "terms") ]
+        , [ resource  =? "gnome-panel" --> doIgnore ]
       -- for fullscreen flash
-	  , [ isFullscreen                    --> doFullFloat ]
+        , [ isFullscreen                    --> doFullFloat ]
 	]
         ) <+> manageScratchPads
         where
           myWebs   = [ "Iceweasel", "Icedove" ]
           myIMs    = [ "Pidgin", "Skype" ]
-          myDocs   = [ "Evince", "Okular" ]
+          myDocs   = [ "Evince", "Okular", "Chmsee" ]
           myVMs    = [ "VirtualBox", "Vmware" ]
           myFloats = [ "Gnome-display-properties" ]
           manageScratchPads = namedScratchpadManageHook scratchpads

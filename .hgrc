@@ -3,11 +3,32 @@ log = -v --stat
 status = -m
 tip = -vp
 
-[ui]
-username = <name> <email>
-
 [extensions]
 hgext.bookmarks = 
+color = 
+pager = 
+mq = 
+
+[ui]
+editor = jed
+username = Dan Kruchinin <dkruchinin@acm.org>
+
+[pager]
+pager = less
+quiet = True
+attend = diff,status,log,qdiff,blame,annotate
+
+[color]
+mode = auto
+diff.diffline = bold
+diff.extended = cyan bold
+diff.file_a = red bold
+diff.file_b = green bold
+diff.hunk = magenta
+diff.deleted = red
+diff.inserted = green
+diff.changed = white
+diff.trailingwhitespace = bold red_background
 
 [alias]
 slog = log --stat -l 5
