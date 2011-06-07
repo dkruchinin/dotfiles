@@ -297,7 +297,7 @@
           myWebs   = [ "Iceweasel", "Icedove" ]
           myIMs    = [ "Pidgin", "Skype" ]
           myDocs   = [ "Evince", "Okular", "Chmsee" ]
-          myVMs    = [ "VirtualBox", "Vmware" ]
+          myVMs    = [ "VirtualBox", "Vmware", "Vmware-installer.py", "Vmplayer" ]
           myFloats = [ "Gnome-display-properties" ]
           manageScratchPads = namedScratchpadManageHook scratchpads
 
