@@ -150,8 +150,9 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 zstyle ':completion:*' group-name ''
 
 # cd
-zstyle ':completion:*:*:cd:*' menu yes
-#zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:cd:*' tag-order local-directories path-directories
+zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 
 # kill
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
