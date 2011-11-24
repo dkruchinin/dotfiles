@@ -9,6 +9,7 @@ autoload zcalc
 # Global environment variables
 ###
 export EDITOR="emacs -nw -q"
+export PAGER=less
 # directory for run-help function to find docs
 export HELPDIR=/usr/local/lib/zsh/help
 # not all systems know my rxvt-unicode terminal, let them
