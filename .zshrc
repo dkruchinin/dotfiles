@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 autoload edit-command-line
-autoload -U compinit
+autoload -Uz compinit
 autoload -U zmv
 autoload zcalc
 
@@ -148,6 +148,10 @@ zstyle ':completion:*:warnings' format $'%{\e[0;31m%}No matches for:%{\e[0m%} %d
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 zstyle ':completion:*' group-name ''
+
+# cd
+zstyle ':completion:*:*:cd:*' menu yes select
+zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 
 # kill
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
