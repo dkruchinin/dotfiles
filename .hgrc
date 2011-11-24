@@ -1,16 +1,20 @@
 [defaults]
 log = -v --stat
 status = -m
-tip = -vp
+tip = -v
 
 [extensions]
-hgext.bookmarks = 
-color = 
-pager = 
-mq = 
+hgext.bookmarks =
+color =
+pager =
+mq =
+patchbomb =
+rebase =
+graphlog =
+parentrevspec =
 
 [ui]
-editor = jed
+editor = emacs -nw -q
 username = Dan Kruchinin <dkruchinin@acm.org>
 
 [pager]
@@ -32,4 +36,8 @@ diff.trailingwhitespace = bold red_background
 
 [alias]
 slog = log --stat -l 5
+sendpatch = email --date `date "+%D"` -g -d
 
+[diff]
+showfunc = True
+git = True
