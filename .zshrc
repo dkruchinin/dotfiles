@@ -5,8 +5,6 @@ autoload -Uz compinit
 autoload -U zmv
 autoload zcalc
 
-OSNAME=`uname -s`
-
 ####################
 # Global environment variables
 ###
@@ -55,11 +53,7 @@ alias cp='nocorrect cp'
 alias mkdir='nocorrect mkdir'
 # colored grep, ls and diff
 alias grep='egrep --color'
-if [ "$OSNAME" = "Darwin" ]; then
-	alias ls='ls -G'
-else
-	alias ls='ls --color'
-fi
+alias ls='ls --color'
 alias diff='colordiff'
 alias j=jobs
 alias pud=pushd
@@ -223,4 +217,21 @@ source $HOME/.zsh_functions/zsh-syntax-highlighting.zsh
 autoload -U colors && colors
 autoload -U promptinit
 setprompt
+
+OSNAME=`uname -s`
+
+# OS-specific settings
+case $OSNAME in 
+    Darwin)
+	alias ls='ls -G'
+	;;
+    SunOS)
+	export PATH=$PATH:/sbin:/usr/sbin:/opt/onbld/bin
+	alias grep='egrep'
+	alias diff='diff'
+	;;
+    *)
+	;;
+esac
+
 
