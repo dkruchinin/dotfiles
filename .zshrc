@@ -5,6 +5,8 @@ autoload -U compinit
 autoload -U zmv
 autoload zcalc
 
+OSNAME=`uname -s`
+
 ####################
 # Global environment variables
 ###
@@ -17,9 +19,11 @@ export TERM=xterm
 # use mono colortheme for menuconfig by default
 export MENUCONFIG_COLOR=mono
 export MANPATH=$X11HOME/man:/usr/man:/usr/lang/man:/usr/share/man:/usr/local/man
-export PATH=$PATH:$HOME/utils
+export PATH=$PATH:/opt/local/bin:$HOME/utils
 # make less understand colors 
 export LESS=FRSXQ
+
+launchctl setenv PATH $PATH
 
 ####################
 # ZSH options
@@ -53,7 +57,11 @@ alias cp='nocorrect cp'
 alias mkdir='nocorrect mkdir'
 # colored grep, ls and diff
 alias grep='egrep --color'
-alias ls='ls --color'
+if [ "$OSNAME" = "Darwin" ]; then
+	alias ls='ls -G'
+else
+	alias ls='ls --color'
+fi
 alias diff='colordiff'
 alias j=jobs
 alias pud=pushd
@@ -191,14 +199,16 @@ setprompt() {
     local reset_cl braces_cl info_cl line_cl path_cl errcode_cl
     reset_cl="%{$reset_color%}"
     braces_cl="%{$fg[gray]%}"
-    info_cl="%{$fg[blue]%}"
+    name_cl="%{$fg[blue]%}"
+    host_cl="%{$fg[cyan]%}"
     line_cl="%{$fg[gray]%}"
+    info_cl="%{$fg[yellow]%}"
     path_cl="%{$fg[green]%}"
     prompt_cl="%{$fg[red]%}"
     errcode_cl="%{$fg[yellow]%}"
 
-    PROMPT="${braces_cl}(${info_cl}%n@%m${braces_cl}) ${prompt_cl}%#${reset_cl} "
-    RPROMPT=" ${braces_cl}[${path_cl}%~${braces_cl} | ${errcode_cl}%?${reset_cl}${braces_cl}]${reset_cl}"
+    PROMPT="${braces_cl}(${name_cl}%n${info_cl}@${host_cl}%m${braces_cl}) ${prompt_cl}%#${reset_cl} "
+    RPROMPT=" ${braces_cl}[${path_cl}%~${reset_cl} ${braces_cl}|${reset_cl} ${errcode_cl}%?${reset_cl}${braces_cl}]${reset_cl}"
 }
 
 # private functions used mostly for my work

@@ -10,7 +10,6 @@ pager =
 mq = 
 
 [ui]
-editor = jed
 username = Dan Kruchinin <dkruchinin@acm.org>
 
 [pager]
