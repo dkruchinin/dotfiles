@@ -23,8 +23,6 @@ export PATH=$PATH:/opt/local/bin:$HOME/utils
 # make less understand colors 
 export LESS=FRSXQ
 
-launchctl setenv PATH $PATH
-
 ####################
 # ZSH options
 ###
