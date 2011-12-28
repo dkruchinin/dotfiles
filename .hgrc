@@ -1,5 +1,5 @@
 [defaults]
-log = -v --stat
+log = -v
 status = -m
 tip = -v
 
