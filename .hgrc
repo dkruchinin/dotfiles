@@ -1,6 +1,5 @@
 [defaults]
-log = -v
-status = -m
+#log = -v
 tip = -v
 
 [extensions]
@@ -12,9 +11,13 @@ patchbomb =
 rebase =
 graphlog =
 parentrevspec =
+reviewboard = /Users/dk/work/tegile/hgreviewboard
+
+[reviewboard]
+server = http://reviews.eng-us.tegile.com/
 
 [ui]
-editor = emacs -nw -q
+editor = vim
 username = Dan Kruchinin <dkruchinin@acm.org>
 
 [pager]

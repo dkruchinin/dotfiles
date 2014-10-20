@@ -8,7 +8,7 @@ autoload zcalc
 ####################
 # Global environment variables
 ###
-export EDITOR="emacs -nw -q"
+export EDITOR="vim"
 export PAGER=less
 # directory for run-help function to find docs
 export HELPDIR=/usr/local/lib/zsh/help
@@ -18,9 +18,27 @@ export TERM=xterm
 # use mono colortheme for menuconfig by default
 export MENUCONFIG_COLOR=mono
 export MANPATH=$X11HOME/man:/usr/man:/usr/lang/man:/usr/share/man:/usr/local/man
-export PATH=$PATH:/opt/local/bin:$HOME/utils
+export PATH=$HOME/.cabal/bin:$PATH:/usr/local/bin:/opt/local/bin:$HOME/bin
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 # make less understand colors 
 export LESS=FRSXQ
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+####################
+# project specific ENV and functions
+###
+
+export SERVER_HOME=/usr/local/Cellar/virgo/virgo-tomcat-server-3.6.3.RELEASE
+	
+virgo() {
+        bash $SERVER_HOME/bin/$1
+}
+####################
+# java related stuff
+###
+export FINDBUGS_HOME=/usr/local/Cellar/findbugs/2.0.2/libexec
 
 ####################
 # ZSH options
@@ -86,6 +104,10 @@ alias -s chm=chmsee
 alias -g L='| less'
 alias -g H='| head'
 alias -g T='| tail'
+
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
 
 ####################
 # History settings and other miningless stuff
