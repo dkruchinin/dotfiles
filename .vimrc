@@ -45,6 +45,8 @@ endfunction
 let c_space_errors = 1
 
 filetype plugin on
+set autoindent
+set expandtab
 filetype plugin indent on
 au BufNewFile *.{h,hpp} call <SID>insert_gates()
 

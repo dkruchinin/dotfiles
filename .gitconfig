@@ -6,3 +6,5 @@
 	pager = true
 	diff = true
 	branch = true
+[push]
+	default = matching

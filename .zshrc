@@ -18,8 +18,12 @@ export TERM=xterm
 # use mono colortheme for menuconfig by default
 export MENUCONFIG_COLOR=mono
 export MANPATH=$X11HOME/man:/usr/man:/usr/lang/man:/usr/share/man:/usr/local/man
-export PATH=$HOME/.cabal/bin:$PATH:/usr/local/bin:/opt/local/bin:$HOME/bin
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+export PATH=$HOME/.local/bin:/usr/local/bin:$PATH:/opt/local/bin:$HOME/bin
+export GOPATH=$HOME/go
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
+
+# add pyopencv to python path
+export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/opencv/2.4.11/lib/python2.7/site-packages
 # make less understand colors 
 export LESS=FRSXQ
 
@@ -104,6 +108,8 @@ alias -s chm=chmsee
 alias -g L='| less'
 alias -g H='| head'
 alias -g T='| tail'
+
+alias python='python3'
 
 unalias run-help
 autoload run-help
